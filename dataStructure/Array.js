@@ -111,3 +111,34 @@ function addToTarget (arr,target) {
     return null
 }
 // console.log(addToTarget([1,2,3,20,5,10],8))
+// Given an integer array nums, return true if any value appears at 
+// least twice in the array, and return false if every element is distinct.
+function countElement(arr) {
+    if (arr.length <= 1) {
+        return false;
+    }
+    let hash = {};
+    for ( let i =0; i < arr.length; i++) {
+        if(hash[arr[i]])return true;
+        hash[arr[i]] = 1;
+    }
+    return false;
+}
+// console.log(countElement([1,3,6,4,10,5]));
+
+// Given an array, rotate the array to the right by k steps, 
+// where k is non-negative.
+
+function rotateArray(arr, k) {
+    if (arr.length <= 1) {
+        return arr;
+    }
+    k = (k % arr.length)
+    console.log(k);
+    let end = arr.splice(arr.length - k)
+    console.log(end);
+    arr.splice(0,0,...end);
+    return arr;
+}
+// console.log(rotateArray([1,2,3,4,5,6,7],3));
+
