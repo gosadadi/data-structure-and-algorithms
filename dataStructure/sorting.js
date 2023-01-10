@@ -177,3 +177,32 @@ function quickSort(arr, left = 0, right = arr.length - 1) {
     return arr;
 }
 // console.log(quickSort([4, 8, 2,-3, 1, 5, 7, 6, 3]));
+
+function getDigit(nums, i) {
+    
+    return Math.floor(Math.abs(nums)/Math.pow(10,i)) % 10;
+}
+function digitCount(nums) {
+    if (nums === 0) return 1;
+    return Math.floor(Math.log10(Math.abs(nums))) + 1;
+}
+function mostDigits(nums) {
+    let maxDigits = 0;
+    for (let i = 0; i < nums.length; i++) {
+        maxDigits = Math.max(maxDigits, digitCount(nums[i]));
+    }
+    return  maxDigits;
+}
+function radixSort(nums) {
+    let maxDigitsCount = mostDigits(nums)
+    for (let k = 0; k < maxDigitsCount; k++) {
+        let digitBuckets = Array.from({length: 10}, () => []);
+        for (let i = 0; i < nums.length; i++) {
+            let digit = getDigit(nums[i],k);
+            digitBuckets[digit].push(nums[i]);
+        }
+        nums = [].concat(...digitBuckets);
+    }
+    return nums;
+}
+console.log(radixSort([23,345,5467,12,2345,9852]))
