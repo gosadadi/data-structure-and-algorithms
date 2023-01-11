@@ -1,15 +1,15 @@
-// let myLinkedList = {
-//     head:{
-//         value:10,
-//         next:{
-//             value:5,
-//             next:{
-//                 value:16,
-//                 next:null
-//             }
-//         }
-//     }
-// }
+let newLinkedList = {
+    head:{
+        value:10,
+        next:{
+            value:5,
+            next:{
+                value:16,
+                next:null
+            }
+        }
+    }
+}
 // =======create 10-->20-->30 linked list======
 class Node {
     constructor(value){
