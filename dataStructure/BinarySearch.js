@@ -4,14 +4,11 @@ class Node {
         this.right = null;
         this.left = null;
     }
-
 }
-
 class BinarySearchTree {
     constructor() {
         this.root = null;
     }
-
     insert(value) {
         const newNode = new Node(value);
         // case1: if root is null
