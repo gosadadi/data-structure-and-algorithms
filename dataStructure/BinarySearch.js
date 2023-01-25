@@ -14,11 +14,13 @@ class BinarySearchTree {
         // case1: if root is null
         if (!this.root) {
             this.root = newNode;
+            return this;
         }
         // if there is root
         else {
             let currentNode = this.root;
             while (true) {
+                if (value === currentNode.value) return undefined;
                 if (value < currentNode.value) {
                     // left
                     if (!currentNode.left) {
@@ -26,6 +28,7 @@ class BinarySearchTree {
                         return this;
                     }
                     currentNode = currentNode.left;
+
                 } else {
                     // right
                     if (!currentNode.right) {
@@ -117,14 +120,14 @@ class BinarySearchTree {
         }
         return this.BFS()
     }
-    DFInOrder () {
-        
-    } 
-    DFPostOrder () {
-        
-    } 
-    DFPreOrder () {
-        
+    DFInOrder() {
+
+    }
+    DFPostOrder() {
+
+    }
+    DFPreOrder() {
+
     }
 }
 const tree = new BinarySearchTree();
@@ -135,8 +138,9 @@ tree.insert(20);
 tree.insert(170);
 tree.insert(15);
 tree.insert(1);
+console.log(tree);
 tree.lookup(9)
-// JSON.stringify(traverse(tree.root))
+JSON.stringify(traverse(tree.root))
 console.log(tree.lookup(170));
 function traverse(node) {
     const tree = { value: node.value };
