@@ -28,7 +28,6 @@ class BinarySearchTree {
                         return this;
                     }
                     currentNode = currentNode.left;
-
                 } else {
                     // right
                     if (!currentNode.right) {
@@ -37,7 +36,6 @@ class BinarySearchTree {
                     }
                     currentNode = currentNode.right;
                 }
-
             }
         }
     }
