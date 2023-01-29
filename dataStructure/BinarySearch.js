@@ -44,7 +44,7 @@ class BinarySearchTree {
             return false;
         }
         let currentNode = this.root;
-        while (currentNode) {
+        while (currentNode && !found) {
             if (value < currentNode.value) {
                 currentNode = currentNode.left;
             } else if (value > currentNode.value) {
@@ -88,7 +88,7 @@ class BinarySearchTree {
         }
     }
     breadthFirstSearch() {
-        let currentNode = thi.root;
+        let currentNode = this.root;
         let list = [];
         let queue = [];
         queue.push(currentNode);
@@ -118,16 +118,40 @@ class BinarySearchTree {
         }
         return this.BFS()
     }
-    DFInOrder() {
+    DFSInOrder() {
+        let data = [];
+        function traverse(node) {
+            if(node.left) traverse(node.left);
+            data.push(node.value);
+            if(node.right) traverse(node.right);
+            
+        }
+        traverse(this.root);
+        return data;
 
     }
-    DFPostOrder() {
-
+    DFSPostOrder() {
+        let data = [];
+        function traverse(node) {
+            if(node.left) traverse(node.left);
+            if(node.right) traverse(node.right);
+            data.push(node.value);
+        }
+        traverse(this.root);
+        return data;
     }
-    DFPreOrder() {
-
+    DFSPreOrder() {
+        let data = [];
+        function traverse(node) {
+            data.push(node.value);
+            if(node.left) traverse(node.left);
+            if(node.right) traverse(node.right);
+        }
+        traverse(this.root);
+        return data;
     }
 }
+
 const tree = new BinarySearchTree();
 tree.insert(9);
 tree.insert(4);
@@ -136,15 +160,7 @@ tree.insert(20);
 tree.insert(170);
 tree.insert(15);
 tree.insert(1);
-console.log(tree);
-tree.lookup(9)
-JSON.stringify(traverse(tree.root))
-console.log(tree.lookup(170));
-function traverse(node) {
-    const tree = { value: node.value };
-    tree.left = node.left === null ? null :
-        traverse(node.left);
-    tree.right = node.right === null ? null :
-        traverse(node.right);
-    return tree;
-}
+console.log(tree.breadthFirstSearch());
+console.log(tree.DFSPreOrder());
+console.log(tree.DFSPostOrder());
+console.log(tree.DFSInOrder());
