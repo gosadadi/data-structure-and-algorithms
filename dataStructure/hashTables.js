@@ -17,7 +17,15 @@ class HashTable {
         return index;
     }
     get(key) {
-
+        let index  = thos._hash(key);
+        if(this.keyMap[index]) {
+            for (let i =0; i < this.keyMap[index][i].length; i++) {
+                if(this.keyMap[index][i][0] === key) {
+                    return this.keyMap[index][i];
+                }
+            }
+        }
+        return undefined;
     }
 }
 let ht = new HashTable();
