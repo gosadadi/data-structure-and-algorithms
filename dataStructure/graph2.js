@@ -27,8 +27,34 @@ class Graph {
         }
         delete this.adjacencyList[vertex];
     }
-    traverse(vertex) {
-        
+    depthFirstTraversal(start) {
+        const result = [];
+        const visited = {};
+        const adjacencyList = this.adjacencyList;
+        (function dfs(vertex){
+            if(!vertex) return null;
+            visited[vertex] = true;
+            result.push(vertex);
+            adjacencyList[vertex].forEach(neighbor => {
+                if(!visited[neighbor]) {
+                    return dfs(neighbor);
+                }
+            });
+        })(start)
+    }
+    depthFirstIterative(start) {
+        const stack = [start];
+        const result = [];
+        const visited = {};
+        visited[start] = true;
+        while(stack.length) {
+            currentVertex = stack.pop();
+            result.push(currentVertex);
+            this.adjacencyList[currentVertex].forEach(neighbor => {
+                if(!visited[neighbor]) {
+                }
+            })
+        }
     }
 }
 let newGraph = new Graph();
