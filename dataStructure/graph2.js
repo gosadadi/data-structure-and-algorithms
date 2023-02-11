@@ -56,6 +56,21 @@ class Graph {
             })
         }
     }
+    breadthFirstTraversal() {
+        const queue = [start];
+        const result = [];
+        const visited = {};
+        while(queue.length) {
+            let currentVertex = queue.shift();
+            result.push(currentVertex).forEach(neighbor => {
+                if(!visited[neighbor]) {
+                    visited[neighbor] = true;
+                    queue.push(neighbor);
+                }
+            });
+            
+        }
+    }
 }
 let newGraph = new Graph();
 newGraph.addVertex("Tokyo");
