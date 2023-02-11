@@ -55,11 +55,14 @@ class Graph {
                 }
             })
         }
+        return result;
     }
     breadthFirstTraversal() {
         const queue = [start];
         const result = [];
         const visited = {};
+        let currentVertex;
+        visited[start] = true;
         while(queue.length) {
             let currentVertex = queue.shift();
             result.push(currentVertex).forEach(neighbor => {
@@ -70,6 +73,7 @@ class Graph {
             });
             
         }
+        return result;
     }
 }
 let newGraph = new Graph();
