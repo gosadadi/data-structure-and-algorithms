@@ -48,8 +48,7 @@ class weightedGraph {
             if(smallest || distances[smallest] !== Infinity) {
                 for(let neighbor in this.adjacencyList[smallest]) {
                     let nextNode = this.adjacencyList[smallest][neighbor];
-                    console.log(neighbor);
-                    console.log(this.adjacencyList);
+                    //====calculate new distance to neighboring node====
                 }
             }
         }
